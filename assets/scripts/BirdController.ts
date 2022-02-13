@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Sprite, Label, Vec2, Vec3, input, Input, EventTouch, RigidBody2D } from 'cc';
+import { _decorator, Component, Node, Sprite, Label, Vec2, Vec3, input, Input, EventTouch, RigidBody2D, Collider2D, Contact2DType, IPhysics2DContact, Camera } from 'cc';
 const { ccclass, property } = _decorator;
 
 /**
@@ -27,6 +27,9 @@ export class BirdController extends Component {
     @property({type:Node})
     tail:Node | null = null;
 
+    @property(Camera)
+    gameCamera:Camera | null = null;
+
     @property({type:Label})
     playerNameText:Label | null = null;
 
@@ -34,6 +37,7 @@ export class BirdController extends Component {
 
     birdBody:RigidBody2D | null = null;
     //
+    isGameOver:boolean = false;
     //
     start () {
         // [3]
@@ -47,18 +51,49 @@ export class BirdController extends Component {
         //
         // input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         // //
+        let collider = this.getComponent(Collider2D);
+        if (collider) {
+            collider.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
+        }
 
+
+    }
+    onBeginContact (selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
+        // will be called once when two colliders begin to contact
+        if(otherCollider.node.name=="ong_nuoc"){
+            //gameo ver
+            console.log('Game over');
+            this.isGameOver=true;
+            //stop di chuyen
+        }
     }
     onTouchStart(event: EventTouch) {
         // console.log(event.getLocation());  // location on screen space
         // console.log(event.getUILocation());  // location on UI space
+        if(this.isGameOver){
+            return;
+        }
         console.log(this.name,'Click');
         this.birdBody.applyForce(new Vec2(0,100000),Vec2.ZERO,false);
     }
-
+    onCollisionEnter(other, self){
+        console.log(this.name,other.name);
+    }
     // onTouchEnd(event: EventTouch) {
 
     // }
+    update(deltaTime:number){
+        //
+        //x = x+0.1
+        //
+        //
+        if(this.isGameOver) return;
+        //
+        let oldX = this.node.position.x;
+        let newX=oldX+=2;
+        this.gameCamera.node.setPosition(newX,0,1000)
+        this.node.setPosition(new Vec3(newX,0,0));
+    }
 }
 
 /**
