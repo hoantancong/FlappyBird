@@ -2,12 +2,12 @@
   "ver": "1.1.35",
   "importer": "prefab",
   "imported": true,
-  "uuid": "c50c9832-63e6-4761-9183-0fde8b9837a2",
+  "uuid": "9b067d7a-1f2b-4a32-8362-7226e3b3c551",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "ong_nuoc"
+    "syncNodeName": "RestartUI"
   }
 }

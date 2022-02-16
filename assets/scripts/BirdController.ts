@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Sprite, Label, Vec2, Vec3, input, Input, EventTouch, RigidBody2D, Collider2D, Contact2DType, IPhysics2DContact, Camera } from 'cc';
+import { _decorator, Component, Node, Sprite, Label, Vec2, Vec3, input, Input, EventTouch, RigidBody2D, Collider2D, Contact2DType, IPhysics2DContact, Camera, ERigidBodyType, ERigidBody2DType } from 'cc';
 import { GameController } from './GameController';
 const { ccclass, property } = _decorator;
 
@@ -31,8 +31,6 @@ export class BirdController extends Component {
     @property(Camera)
     gameCamera:Camera | null = null;
 
-    @property({type:Label})
-    playerNameText:Label | null = null;
 
     health:number = 10;
 
@@ -47,7 +45,6 @@ export class BirdController extends Component {
     start () {
         // [3]
         this.gameController = this.gameNode.getComponent(GameController);
-        this.playerNameText.string = 'Bird 1';
         this.tail.position = new Vec3(1,1,0);
         //
         this.birdBody = this.node.getComponent(RigidBody2D);
@@ -64,12 +61,17 @@ export class BirdController extends Component {
 
 
     }
+    public birdStart(){
+        this.node.getComponent(RigidBody2D).type = ERigidBody2DType.Dynamic;
+        console.log(this.node.getComponent(RigidBody2D).type);
+    }
     onBeginContact (selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
         // will be called once when two colliders begin to contact
         if(otherCollider.node.name=="ong_nuoc"){
             //gameo ver
             console.log('Game over');
             this.isGameOver=true;
+            this.gameController.gameOver();
             //stop di chuyen
         }
     }
@@ -80,7 +82,7 @@ export class BirdController extends Component {
             return;
         }
         console.log(this.name,'Click');
-        this.birdBody.applyForce(new Vec2(0,100000),Vec2.ZERO,false);
+        this.birdBody.applyForce(new Vec2(0,50000),Vec2.ZERO,false);
     }
     onCollisionEnter(other, self){
         console.log(this.name,other.name);
@@ -96,7 +98,7 @@ export class BirdController extends Component {
         if(this.isGameOver) return;
         //
         let oldX = this.node.position.x;
-        let newX=oldX+=4;
+        let newX=oldX+=3;
         this.gameCamera.node.setPosition(newX,0,1000)
         this.node.setPosition(new Vec3(newX,this.node.position.y,0));
         //

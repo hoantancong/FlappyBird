@@ -1,5 +1,7 @@
 
-import { _decorator, Component, Node, Prefab, instantiate, Vec3, Canvas, Quat } from 'cc';
+import { _decorator, Component, Node, Prefab, instantiate, Vec3, Canvas, Quat, Label, Director, director } from 'cc';
+import { BirdController } from './BirdController';
+import { RestartUI } from './RestartUI';
 const { ccclass, property } = _decorator;
 
 /**
@@ -19,10 +21,28 @@ export class GameController extends Component {
 
     @property(Prefab)
     ongNuocPrefab: Prefab | null = null;
-    @property(Canvas)
-    gameCanvas: Canvas | null = null;
+    @property(Node)
+    gameBackground:Node | null = null;
 
+    @property(Node)
+    gameUI:Node | null = null;
     private ongNuocArr: Node[] = [];
+    //button
+    @property(Node)
+    private PlayButtonNode:Node | null = null;
+
+    //
+    private birdPositionX:number = 0;
+    @property(Node)
+    private bird:Node | null = null;
+    private scoreNumber:number = 0;
+    //SCORE TEXT LEBEL
+    @property(Label)
+    private scoreLabel:Label | null = null;
+
+    //game over
+    @property(Prefab)
+    private gameOverPrefab:Prefab | null = null;
     start() {
         // [3]
         console.log(this.name, "hello world");
@@ -32,6 +52,7 @@ export class GameController extends Component {
     //
     public trackingBird(birdX:number){
         //
+        this.birdPositionX = birdX;
         // console.log('this.name');
         // console.log('this.name',this.ongNuocArr[0]);
         if(this.ongNuocArr[0]){
@@ -39,6 +60,10 @@ export class GameController extends Component {
             let firstPipeX = this.ongNuocArr[0].position.x;
             let delta = birdX - firstPipeX;
             if(delta > 2000){
+                //update score
+                this.scoreNumber++;
+                //
+                this.scoreLabel.string = ""+this.scoreNumber;
                 //move the pipe
                 console.log(this.name,'change pipe');
                 this.ongNuocArr[0].setPosition(new Vec3(firstPipeX+4500,160))
@@ -52,7 +77,20 @@ export class GameController extends Component {
 
     initGame() {
         //khoi tao ong nuoc
+        this.scoreNumber = 0;
+        this.scoreLabel.string = ""+this.scoreNumber;
+        this.PlayButtonNode.on(Node.EventType.TOUCH_END,this.onStartGame,this,true);
+  
+    }
+    private onStartGame(){
+        //
         this.createPipe();
+        //
+        this.PlayButtonNode.active = false;
+        if(this.bird){
+            this.bird.getComponent(BirdController).birdStart();
+        }
+        //
     }
     private createPipe() {
         //tao ong nuoc hang 1
@@ -66,18 +104,35 @@ export class GameController extends Component {
             //let y = i>3?870:970
             let x =0 ;
             if(i<3){
-                x = 0 + i * 1500;
+                x = this.birdPositionX + 1000 + i * 1500;
             }
 
             ongNuoc.position = new Vec3(x, 160)
             //
             //
-            this.gameCanvas.node.addChild(ongNuoc);
+            this.gameBackground.addChild(ongNuoc);
             //day vao mang
             this.ongNuocArr.push(ongNuoc);
         }
         //
     }
+    public gameOver(){
+        const showRestartUI = ()=>{
+            console.log(this.name,'Game over 123....');
+            let restartUI = instantiate(this.gameOverPrefab);
+            this.gameUI.addChild(restartUI);
+            restartUI.getComponent(RestartUI).init(this.scoreNumber,()=>{
+                director.loadScene('maingame')
+            })
+        }
+        setTimeout(() => {
+            //
+            //show restart ui 
+            showRestartUI();
+            //
+        }, 1000);
+    }
+    
     // update (deltaTime: number) {
     //     // [4]
     // }
