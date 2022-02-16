@@ -1,5 +1,6 @@
 
 import { _decorator, Component, Node, Sprite, Label, Vec2, Vec3, input, Input, EventTouch, RigidBody2D, Collider2D, Contact2DType, IPhysics2DContact, Camera } from 'cc';
+import { GameController } from './GameController';
 const { ccclass, property } = _decorator;
 
 /**
@@ -39,8 +40,13 @@ export class BirdController extends Component {
     //
     isGameOver:boolean = false;
     //
+    @property(Node)
+    private gameNode:Node | null = null;
+    private gameController:GameController | null = null;
+    //
     start () {
         // [3]
+        this.gameController = this.gameNode.getComponent(GameController);
         this.playerNameText.string = 'Bird 1';
         this.tail.position = new Vec3(1,1,0);
         //
@@ -90,9 +96,12 @@ export class BirdController extends Component {
         if(this.isGameOver) return;
         //
         let oldX = this.node.position.x;
-        let newX=oldX+=2;
+        let newX=oldX+=4;
         this.gameCamera.node.setPosition(newX,0,1000)
-        this.node.setPosition(new Vec3(newX,0,0));
+        this.node.setPosition(new Vec3(newX,this.node.position.y,0));
+        //
+        this.gameController.trackingBird(newX);
+        //
     }
 }
 

@@ -27,11 +27,11 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 27
+      "__id__": 33
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 34
+      "__id__": 40
     },
     "_id": "7a7362e7-b221-4b3d-9420-1f6999c12a2d"
   },
@@ -172,7 +172,7 @@
     "_enabled": true,
     "__prefab": null,
     "ongNuocPrefab": {
-      "__uuid__": "798ef00e-ec3e-454c-ba48-a17c8a992b17",
+      "__uuid__": "8028e861-4e66-4833-bbf1-5a4e0e9f0e27",
       "__expectedType__": "cc.Prefab"
     },
     "gameCanvas": {
@@ -216,13 +216,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 25
+        "__id__": 31
       },
       {
         "__id__": 6
       },
       {
-        "__id__": 26
+        "__id__": 32
       }
     ],
     "_prefab": null,
@@ -492,6 +492,21 @@
       },
       {
         "__id__": 23
+      },
+      {
+        "__id__": 25
+      },
+      {
+        "__id__": 26
+      },
+      {
+        "__id__": 28
+      },
+      {
+        "__id__": 29
+      },
+      {
+        "__id__": 30
       }
     ],
     "removedComponents": []
@@ -522,7 +537,7 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -1119.677,
       "y": 0,
       "z": 0
     }
@@ -593,6 +608,66 @@
     ]
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 22
+    },
+    "propertyPath": [
+      "_enabled"
+    ],
+    "value": true
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 27
+    },
+    "propertyPath": [
+      "_enabled"
+    ],
+    "value": true
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "8eFtNFETNHdqEnT80Kw2da"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 22
+    },
+    "propertyPath": [
+      "_type"
+    ],
+    "value": 2
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 24
+    },
+    "propertyPath": [
+      "gameController"
+    ],
+    "value": {
+      "__id__": 4
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 24
+    },
+    "propertyPath": [
+      "gameNode"
+    ],
+    "value": {
+      "__id__": 4
+    }
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -647,10 +722,10 @@
     "fileId": "7a7362e7-b221-4b3d-9420-1f6999c12a2d",
     "targetOverrides": [
       {
-        "__id__": 28
+        "__id__": 34
       },
       {
-        "__id__": 31
+        "__id__": 37
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -665,7 +740,7 @@
       "__id__": 13
     },
     "sourceInfo": {
-      "__id__": 29
+      "__id__": 35
     },
     "propertyPath": [
       "tail"
@@ -674,7 +749,7 @@
       "__id__": 13
     },
     "targetInfo": {
-      "__id__": 30
+      "__id__": 36
     }
   },
   {
@@ -695,7 +770,7 @@
       "__id__": 13
     },
     "sourceInfo": {
-      "__id__": 32
+      "__id__": 38
     },
     "propertyPath": [
       "playerNameText"
@@ -704,7 +779,7 @@
       "__id__": 13
     },
     "targetInfo": {
-      "__id__": 33
+      "__id__": 39
     }
   },
   {
@@ -722,19 +797,19 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 35
+      "__id__": 41
     },
     "shadows": {
-      "__id__": 36
+      "__id__": 42
     },
     "_skybox": {
-      "__id__": 37
+      "__id__": 43
     },
     "fog": {
-      "__id__": 38
+      "__id__": 44
     },
     "octree": {
-      "__id__": 39
+      "__id__": 45
     }
   },
   {
