@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Sprite, Label, Vec2, Vec3, input, Input, EventTouch, RigidBody2D, Collider2D, Contact2DType, IPhysics2DContact, Camera, ERigidBodyType, ERigidBody2DType } from 'cc';
+import { _decorator, Component, Node, Vec2, Vec3, input, Input, EventTouch, RigidBody2D, Collider2D, Contact2DType, IPhysics2DContact, Camera, ERigidBody2DType, dragonBones } from 'cc';
 import { GameController } from './GameController';
 const { ccclass, property } = _decorator;
 
@@ -40,7 +40,12 @@ export class BirdController extends Component {
     //
     @property(Node)
     private gameNode:Node | null = null;
+    
     private gameController:GameController | null = null;
+    //
+    private birdAnimator:dragonBones.ArmatureDisplay | null = null;
+
+
     //
     start () {
         // [3]
@@ -58,7 +63,10 @@ export class BirdController extends Component {
         if (collider) {
             collider.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
         }
-
+        //
+        this.birdAnimator = this.node.getComponent(dragonBones.ArmatureDisplay);
+        //
+        //
 
     }
     public birdStart(){
@@ -69,6 +77,7 @@ export class BirdController extends Component {
         // will be called once when two colliders begin to contact
         if(otherCollider.node.name=="ong_nuoc"){
             //gameo ver
+            this.birdAnimator.playAnimation('die');
             console.log('Game over');
             this.isGameOver=true;
             this.gameController.gameOver();

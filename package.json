@@ -1,9 +1,9 @@
 {
+  "creator": {
+    "version": "3.4.1"
+  },
   "name": "FlappyBird",
   "type": "3d",
   "uuid": "4664f2b7-e5b3-45f8-94bb-edf6ae26a1f9",
-  "version": "3.4.0",
-  "creator": {
-    "version": "3.4.0"
-  }
+  "version": "3.4.1"
 }
