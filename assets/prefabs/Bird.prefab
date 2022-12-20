@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "",
+    "_name": "Bird",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -162,7 +162,6 @@
     "__prefab": {
       "__id__": 6
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -289,7 +288,6 @@
     "__prefab": {
       "__id__": 12
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -459,7 +457,6 @@
     "__prefab": {
       "__id__": 23
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,

@@ -17,17 +17,9 @@ const { ccclass, property } = _decorator;
  
 @ccclass('BirdController')
 export class BirdController extends Component {
-    // [1]
-    // dummy = '';
-
-    // [2]
-    // @property
-    // serializableDummy = 0;
     @property
     speed:number = 0;
-    @property({type:Node})
-    tail:Node | null = null;
-
+    
     @property(Camera)
     gameCamera:Camera | null = null;
 
@@ -50,7 +42,7 @@ export class BirdController extends Component {
     start () {
         // [3]
         this.gameController = this.gameNode.getComponent(GameController);
-        this.tail.position = new Vec3(1,1,0);
+        
         //
         this.birdBody = this.node.getComponent(RigidBody2D);
         //
@@ -92,7 +84,7 @@ export class BirdController extends Component {
         }
         console.log(this.name,'Click');
         this.birdBody.applyForce(new Vec2(0,50000),Vec2.ZERO,false);
-    }
+    }   
     onCollisionEnter(other, self){
         console.log(this.name,other.name);
     }

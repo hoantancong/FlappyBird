@@ -28,7 +28,7 @@ export class RestartUI extends Component {
     @property(Label)
     private totalScoreLabel:Label | null = null;
 
-    private restartCallBack:CallableFunction | null = null;
+    private restartCallBack;
     start () {
         // [3]
         this.restartButton.on(Node.EventType.TOUCH_END,this.onRestartButton,this,true);
@@ -38,7 +38,7 @@ export class RestartUI extends Component {
         this.node.destroy();
         this.restartCallBack();
     }
-    public init(score:number,callback:CallableFunction) {
+    public init(score:number,callback) {
         this.totalScoreLabel.string = 'Total:'+score; 
         this.restartCallBack = callback;
     }

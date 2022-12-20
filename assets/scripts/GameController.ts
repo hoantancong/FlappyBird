@@ -18,9 +18,9 @@ const { ccclass, property } = _decorator;
 
 @ccclass('GameController')
 export class GameController extends Component {
-
     @property(Prefab)
     ongNuocPrefab: Prefab | null = null;
+
     @property(Node)
     gameBackground:Node | null = null;
 
@@ -28,6 +28,7 @@ export class GameController extends Component {
     gameUI:Node | null = null;
     private ongNuocArr: Node[] = [];
     //button
+
     @property(Node)
     private PlayButtonNode:Node | null = null;
 
@@ -82,6 +83,8 @@ export class GameController extends Component {
         this.PlayButtonNode.on(Node.EventType.TOUCH_END,this.onStartGame,this,true);
   
     }
+
+
     private onStartGame(){
         //
         this.createPipe();
@@ -92,12 +95,10 @@ export class GameController extends Component {
         }
         //
     }
+
+
     private createPipe() {
         //tao ong nuoc hang 1
-
-
-
-
         for (var i = 0; i < 3; i++) {
             let ongNuoc = instantiate(this.ongNuocPrefab);
             //
@@ -116,6 +117,8 @@ export class GameController extends Component {
         }
         //
     }
+
+
     public gameOver(){
         const showRestartUI = ()=>{
             console.log(this.name,'Game over 123....');
