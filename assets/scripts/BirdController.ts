@@ -25,11 +25,8 @@ export class BirdController extends Component {
     // serializableDummy = 0;
     @property
     speed:number = 0;
-    @property({type:Node})
-    tail:Node | null = null;
 
-    @property(Camera)
-    gameCamera:Camera | null = null;
+
 
 
     health:number = 10;
@@ -50,7 +47,6 @@ export class BirdController extends Component {
     start () {
         // [3]
         this.gameController = this.gameNode.getComponent(GameController);
-        this.tail.position = new Vec3(1,1,0);
         //
         this.birdBody = this.node.getComponent(RigidBody2D);
         //
@@ -70,7 +66,9 @@ export class BirdController extends Component {
 
     }
     public birdStart(){
+        //chuyen tu static sang dynamic
         this.node.getComponent(RigidBody2D).type = ERigidBody2DType.Dynamic;
+        //
         console.log(this.node.getComponent(RigidBody2D).type);
     }
     onBeginContact (selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
@@ -87,14 +85,12 @@ export class BirdController extends Component {
     onTouchStart(event: EventTouch) {
         // console.log(event.getLocation());  // location on screen space
         // console.log(event.getUILocation());  // location on UI space
+        console.log('Add force');
         if(this.isGameOver){
             return;
         }
         console.log(this.name,'Click');
-        this.birdBody.applyForce(new Vec2(0,50000),Vec2.ZERO,false);
-    }
-    onCollisionEnter(other, self){
-        console.log(this.name,other.name);
+        this.birdBody.applyForce(new Vec2(0,10000),Vec2.ZERO,false);
     }
     // onTouchEnd(event: EventTouch) {
 
@@ -105,10 +101,10 @@ export class BirdController extends Component {
         //
         //
         if(this.isGameOver) return;
-        //
+        //di chuyen bird + camera
         let oldX = this.node.position.x;
         let newX=oldX+=3;
-        this.gameCamera.node.setPosition(newX,0,1000)
+        //bird di chuyen
         this.node.setPosition(new Vec3(newX,this.node.position.y,0));
         //
         this.gameController.trackingBird(newX);

@@ -1,14 +1,14 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "",
+    "_name": "RestartUI",
     "_objFlags": 0,
     "_native": "",
     "data": {
       "__id__": 1
     },
     "optimizationPolicy": 0,
-    "asyncLoadAssets": false
+    "persistent": false
   },
   {
     "__type__": "cc.Node",
@@ -40,7 +40,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": -794.694
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -55,6 +55,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -103,6 +104,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -150,7 +152,6 @@
     "__prefab": {
       "__id__": 6
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -192,7 +193,10 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "f0yEvJPCpKRaMLsQTr5jHc"
+    "fileId": "f0yEvJPCpKRaMLsQTr5jHc",
+    "instance": null,
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
   },
   {
     "__type__": "cc.Node",
@@ -233,6 +237,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 33554432,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -280,7 +285,6 @@
     "__prefab": {
       "__id__": 12
     },
-    "_visFlags": 0,
     "_customMaterial": null,
     "_srcBlendFactor": 2,
     "_dstBlendFactor": 4,
@@ -302,6 +306,7 @@
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
+    "_spacingX": 0,
     "_isItalic": false,
     "_isBold": true,
     "_isUnderline": false,
@@ -321,7 +326,10 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "be1SHxwxBBUplO8lU+N6d/"
+    "fileId": "be1SHxwxBBUplO8lU+N6d/",
+    "instance": null,
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
   },
   {
     "__type__": "cc.UITransform",
@@ -381,6 +389,8 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "79VHNhQ6pGL4WSS4Z0cPjZ"
+    "fileId": "79VHNhQ6pGL4WSS4Z0cPjZ",
+    "instance": null,
+    "targetOverrides": null
   }
 ]
